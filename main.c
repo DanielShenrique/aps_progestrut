@@ -61,7 +61,7 @@ int main()
 
                     fflush(stdin);
                     printf("Nome:\n");
-                    fgets(ent_name, sizeof(ent_name), stdin);
+                    fgets(ent_name, sizeof(ent_name) / sizeof(ent_name[0]), stdin);
                     strcpy(students[size - 1].name, ent_name);
                     printf("Nota da 1 prova:\n");
                     ent_grade_1 = ChooseGrades();
@@ -138,6 +138,7 @@ unsigned short int ChooseOpcions()
         }
 
         scanf("%hu", &op);
+        fflush(stdin);
 
         times++;
 
@@ -166,6 +167,7 @@ float ChooseGrades()
         }
 
         scanf("%f", &grades);
+        fflush(stdin);
 
         times++;
     } while (grades < 0.0 || grades > 10.0);
