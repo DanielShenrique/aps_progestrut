@@ -12,8 +12,7 @@
 // Ao selecionar a opção 2, será listado todo os registros.
 // Ao selecionar a opção 3, o programa deverá ser encerrado.
 
-unsigned short int ChooseOpcions();
-float ChooseGrades();
+float Choose(float bigger, float smaller);
 
 struct student
 {
@@ -44,7 +43,7 @@ int main()
         //recebe as opções
         opcion = 0;
         printf("Escolha a opcao: (1 - adicionar, 2 - ver todos, 3 - sair)\n");
-        opcion = ChooseOpcions();
+        opcion = (unsigned short int)Choose(3, 1);
 
         if (opcion == 1)
         {
@@ -64,10 +63,10 @@ int main()
                     fgets(ent_name, sizeof(ent_name) / sizeof(ent_name[0]), stdin);
                     strcpy(students[size - 1].name, ent_name);
                     printf("Nota da 1 prova:\n");
-                    ent_grade_1 = ChooseGrades();
+                    ent_grade_1 = Choose(10, 0);
                     students[size - 1].grade_1 = ent_grade_1;
                     printf("Nota da 2 prova:\n");
-                    ent_grade_2 = ChooseGrades();
+                    ent_grade_2 = Choose(10, 0);
                     students[size - 1].grade_2 = ent_grade_2;
 
                     students[size - 1].average = (ent_grade_1 + ent_grade_2) / 2;
@@ -119,60 +118,30 @@ int main()
     return 0;
 }
 
-//função para limitar as opções de 1 a 3
-unsigned short int ChooseOpcions()
+//função para limitar os numeros entre o menor e o maior
+float Choose(float bigger, float smaller)
 {
 
     unsigned short int times;
 
-    unsigned short int op;
+    float number;
 
     times = 0;
 
     do
     {
-
         if (times > 0)
         {
-            printf("Dado incorreto, as opcao so podem ir de 1 a 3\n");
+            printf("Dado incorreto, os numeros so podem ir de %.0f a %.0f\n", smaller, bigger);
         }
 
-        scanf("%hu", &op);
+        scanf("%f", &number);
         fflush(stdin);
 
         times++;
-
-    } while (op < 1 || op > 3);
-
-    times = 0;
-
-    return op;
-}
-
-//função para limitar as notas de 0 a 10
-float ChooseGrades()
-{
-    unsigned short int times;
-
-    float grades;
+    } while (number < smaller || number > bigger);
 
     times = 0;
 
-    do
-    {
-
-        if (times > 0)
-        {
-            printf("Dado incorreto, as notas so podem ir de 0 a 10\n");
-        }
-
-        scanf("%f", &grades);
-        fflush(stdin);
-
-        times++;
-    } while (grades < 0.0 || grades > 10.0);
-
-    times = 0;
-
-    return grades;
+    return number;
 }

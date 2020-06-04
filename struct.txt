@@ -18,3 +18,13 @@ Nota_AV1: 0.00
 Nota_AV2: 0.00
 Media: 0.00
 ==================
+Nome: Daniel
+Nota_AV1: 10.00
+Nota_AV2: 10.00
+Media: 10.00
+==================
+Nome: Daniel 
+Nota_AV1: 10.00
+Nota_AV2: 10.00
+Media: 10.00
+==================
